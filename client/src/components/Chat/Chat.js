@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import queryString from 'query-string';
 import io from 'socket.io-client'
+import InfoBar from '../InfoBar/InfoBar';
 let socket;
 
 const Chat = ({ location }) => {
@@ -42,6 +43,7 @@ const Chat = ({ location }) => {
     return (
         <div className="outerContainer">
             <div className="container">
+                <InfoBar room={room}></InfoBar>
                 <input 
                 value={message} 
                 onChange={e => setMessage(e.target.value)}
