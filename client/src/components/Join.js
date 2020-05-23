@@ -12,17 +12,17 @@ const Join = () => {
                 placeholder="Name" 
                 className="joinInput" 
                 type="text" 
-                onChange={setName}/>
+                onChange={(e) => setName(e.target.value)}/>
             </div>
             <div>
                 <input 
                 placeholder="Room"
-                className="joinInput"
+                className="joinInput mt-20"
                 type="text"
-                onChange={setRoom}/>
+                onChange={(e) => setRoom(e.target.value)}/>
             </div>
-            <Link>
-                <button className="button" type="submit">Sign In</button>
+            <Link onClick={e => (!name || !room) ? e.preventDefault(): null} to={`/chat?name=${name}&room=${room}`}>
+                <button className="button mt-20" type="submit">Sign In</button>
             </Link>
         </div>
     )
