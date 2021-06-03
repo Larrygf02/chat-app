@@ -7,7 +7,7 @@ import { addUser, removeUser, getUser, getUsersInRoom } from './users';
 const PORT = process.env.PORT || 5000
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server)
+const io = socketio(server, { origins: '*:*' })
 
 io.on('connection', (socket) => {
     console.log('We have a new connection...')
