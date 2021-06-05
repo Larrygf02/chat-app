@@ -16,7 +16,13 @@ const Chat = ({ location }) => {
     const ENDPOINT = 'https://chat022.herokuapp.com/'
     useEffect(() => {
         const { name, room } = queryString.parse(location.search)
-        socket = io(ENDPOINT)
+        const connectionOptions = {
+            "force new connection": true,
+            "reconnectionAttempts": "Infinity", 
+            "timeout" : 10000,                  
+            "transports" : ["websocket"]
+        }
+        socket = io(ENDPOINT, connectionOptions)
         setName(name)
         setRoom(room)
         console.log(socket);
